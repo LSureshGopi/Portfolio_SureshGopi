@@ -179,22 +179,7 @@ footer {
     color: #f0f0f0;
 }
 
-/* Responsive Fix */
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    h1 {
-        font-size: 2em;
-    }
-
-    h2 {
-        font-size: 1.2em;
-    }
-}
-
+/* Skill Badges */
 .skill-badges {
     display: flex;
     flex-wrap: wrap;
@@ -220,6 +205,8 @@ footer {
     background-color: #444;
     color: #eee;
 }
+
+/* Contact Info */
 .contact-info {
     margin-top: 1em;
     line-height: 2;
@@ -231,6 +218,7 @@ footer {
     text-decoration: none;
 }
 
+/* Contact Form */
 .contact-form {
     margin-top: 2em;
     display: flex;
@@ -250,4 +238,76 @@ footer {
 .contact-form button {
     width: fit-content;
     align-self: flex-start;
+}
+
+/* Responsive Fix */
+@media (max-width: 600px) {
+    /* Container adjustments */
+    .container {
+        padding: 1em;
+        max-width: 100%;
+    }
+
+    /* Navbar stacking */
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0;
+    }
+
+    nav ul li {
+        text-align: center;
+    }
+
+    /* Headings smaller */
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    /* Timeline adjustments */
+    .timeline {
+        padding-left: 1em;
+        border-left-width: 3px;
+    }
+
+    .timeline::before {
+        left: -7px;
+        width: 14px;
+        height: 14px;
+    }
+
+    .timeline-item h3 {
+        font-size: 1em;
+    }
+
+    /* Cards single column */
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+    }
+
+    /* Skill badges stack vertically */
+    .skill-badges {
+        flex-direction: column;
+        gap: 0.75em;
+    }
+
+    /* Contact form full width */
+    .contact-form {
+        max-width: 100%;
+        padding: 0 1em;
+    }
+
+    /* Buttons full width for easier tap */
+    .btn,
+    .contact-form button {
+        width: 100%;
+        text-align: center;
+        padding: 1em;
+        font-size: 1.1em;
+    }
 }
