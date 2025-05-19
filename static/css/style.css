@@ -30,6 +30,7 @@ nav {
     z-index: 1000;
     top: 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow-x: auto;
 }
 
 nav ul {
@@ -42,6 +43,7 @@ nav ul {
 
 nav ul li {
     transition: transform 0.2s;
+    flex: 0 0 auto;
 }
 
 nav ul li:hover {
@@ -248,15 +250,29 @@ footer {
         max-width: 100%;
     }
 
-    /* Navbar stacking */
+    /* Navbar scrollable horizontally */
     nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 0;
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: flex-start;
+        gap: 1em;
+        padding: 0 1em;
     }
 
     nav ul li {
+        flex: 0 0 auto;
         text-align: center;
+    }
+
+    /* Optional: hide scroll bar for clean look */
+    nav ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    nav ul {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
     /* Headings smaller */
