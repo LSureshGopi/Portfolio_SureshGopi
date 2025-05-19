@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h1>Hello, I'm <span class="highlight">Suresh Gopi</span> 👋</h1>
+    <h2>Software Developer & Data Engineer</h2>
+    <p>I build industrial automation software using <strong>Python, Flask, FastAPI, SQL</strong> and real-time systems. Passionate about AI/ML, web development, and automation tools.</p>
+    <a href="{{ url_for('static', filename='Suresh_Gopi_resume.pdf') }}" download class="btn">📄 Download Resume</a>
+</section>
+{% endblock %}

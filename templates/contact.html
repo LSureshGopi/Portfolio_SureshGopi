@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h1>Contact Me</h1>
+    <p>If you'd like to collaborate, discuss a project, or just say hi — feel free to reach out!</p>
+
+    <div class="contact-info">
+        <p>📧 Email: <a href="mailto:sgopi2672@gmail.com">sgopi2672@gmail.com</a></p>
+        <p>📞 Phone: <a href="tel:+918825906080">+91 8825906080</a></p>
+        <p>🔗 LinkedIn: 
+            <a href="https://www.linkedin.com/in/suresh-gopi-softwareprogrammer14062002" target="_blank">
+                www.linkedin.com/in/suresh-gopi-softwareprogrammer14062002
+            </a>
+        </p>
+        <p>💻 GitHub: 
+            <a href="https://github.com/LSureshGopi" target="_blank">
+                github.com/LSureshGopi
+            </a>
+        </p>
+    </div>
+
+    <form class="contact-form" action="mailto:sgopi2672@gmail.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</section>
+{% endblock %}
