@@ -1,10 +1,18 @@
- Gopi -{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 <section>
     <h1>Hello, I'm <span class="highlight">Suresh Gopi</span> 👋</h1>
     <h2>Software Developer & Data Engineer</h2>
-    <p>I build industrial automation software using <strong>Python, Flask, FastAPI, SQL</strong> and real-time systems. Passionate about AI/ML, web development, and automation tools.</p>
-    <a href="{{ url_for('static', filename='Suresh Gopi - Resume.pdf') }}" download class="btn">📄 Download Resume</a>
+    <p>
+        I design and develop modern, high-performance applications using 
+        <strong>Python, Flask, FastAPI, and SQL</strong>. My work focuses on creating 
+        efficient data-driven solutions, backend systems, and automation tools 
+        that simplify workflows and enhance productivity. Passionate about 
+        <strong>AI/ML, web development, and cloud technologies</strong>.
+    </p>
+    <a href="{{ url_for('static', filename='SureshGopi-Resume.pdf') }}" download class="btn">
+        📄 Download Resume
+    </a>
 </section>
 {% endblock %}
