@@ -1,150 +1,444 @@
 {% extends "base.html" %}
 {% block content %}
-<section>
-    <h1>Projects</h1>
 
-    <!-- Major Projects -->
-    <h2>Main Projects</h2>
-    <div class="card-grid main-projects-grid">
-        <div class="card" onclick="toggleDesc(this)">
-            <h3>SKEW – Data Collection & Analytics Platform</h3>
-            <p class="short">End-to-end industrial data collection, visualization, and analytics system built with React and FastAPI.</p>
-            <p class="desc">
-                <strong>SKEW</strong> is a comprehensive data collection and analytics platform developed for real-time industrial environments. It captures live process data from PLCs and IoT devices, processes it through a <strong>FastAPI</strong> backend, and stores it securely in <strong>PostgreSQL</strong>. The interactive <strong>React.js</strong> frontend provides dynamic dashboards to visualize trends, monitor production metrics, and analyze system performance. Users can perform detailed <strong>data analysis</strong>, generate reports, and <strong>export insights</strong> in various formats for operational decision-making. The system is fully <strong>containerized with Docker</strong> and version-controlled using <strong>Git</strong>, ensuring scalable, maintainable, and consistent deployments across environments.
-            </p>
-        </div>
-        <div class="card" onclick="toggleDesc(this)">
-            <h3>SKEW ASRS – Automated Storage & Retrieval System</h3>
-            <p class="short">Smart warehouse automation system for real-time material storage, retrieval, and traceability.</p>
-            <p class="desc">
-                <strong>SKEW ASRS</strong> is an intelligent warehouse management system designed to automate <strong>storage and retrieval operations</strong> using real-time data synchronization. Built with <strong>Flask</strong> for the backend and <strong>PostgreSQL</strong> for data handling, it enables seamless communication with PLCs and industrial controllers to execute automated material movements across storage cells. The system provides <strong>complete material traceability</strong> — tracking every product’s storage location, movement history, and retrieval process with high accuracy. Real-time dashboards allow operators to monitor inventory status, manage recipes, and optimize warehouse utilization. Versioned with <strong>Git</strong> and deployed using <strong>Docker</strong>, SKEW ASRS ensures scalable, reliable, and easily maintainable deployments across production environments.
-            </p>
-        </div>
-        <div class="card" onclick="toggleDesc(this)">
-            <h3>SKEW Batch Reporting System</h3>
-            <p class="short">Automated batch reporting and recipe management system for process industries like feed mills and food manufacturing.</p>
-            <p class="desc">
-                <strong>SKEW Batch Reporting</strong> is an end-to-end process reporting platform designed for production environments such as <strong>feed mills, food manufacturing, and chemical batching plants</strong>. Built using <strong>Flask</strong> and <strong>PyQt</strong>, it integrates seamlessly with <strong>PLC-based control systems</strong> to collect real-time batch data, monitor ingredient flow, and generate detailed production reports. The system enables <strong>recipe download</strong>, <strong>material traceability</strong>, and <strong>usage optimization</strong> to ensure consistency and reduce wastage. All data is managed in <strong>MSSQL</strong> for secure, high-volume handling, while deployment is powered by <strong>Git</strong> and <strong>Docker</strong> for efficient versioning and scalability. The software empowers operators and managers to track production history, analyze material usage trends, and optimize resource consumption for better process efficiency.
-            </p>
-        </div>
-        <div class="card" onclick="toggleDesc(this)">
-            <h3>SKEW Energy Monitoring System</h3>
-            <p class="short">Real-time industrial energy analytics and optimization platform with FastAPI, React, and PostgreSQL.</p>
-            <p class="desc">
-                <strong>SKEW Energy Monitoring</strong> is a high-performance system for tracking, analyzing, and optimizing industrial energy usage. Developed using <strong>FastAPI</strong> (backend) and <strong>React.js</strong> (frontend), it connects to <strong>PLCs and smart meters</strong> to collect live electrical parameters such as current, voltage, and power factor. Data is stored and analyzed in <strong>PostgreSQL</strong>, enabling detailed insights into energy consumption patterns and equipment performance. The platform provides intuitive dashboards for <strong>visualization, trend analysis, and load optimization</strong>, helping industries minimize energy costs and improve operational efficiency. The application is fully <strong>containerized with Docker</strong>, version-controlled via <strong>Git</strong>, and built for scalability and real-time responsiveness. Advanced analytics modules also support <strong>predictive maintenance</strong> and <strong>AI-driven load balancing</strong> for sustainable production.
-            </p>
-        </div>
-        <div class="card" onclick="toggleDesc(this)">
-            <h3>Code-X – Automation Engineer Support Tool</h3>
-            <p class="short">Tool for rapid PLC program generation and automation workflow support.</p>
-            <p class="desc">
-                <strong>Code-X</strong> is a productivity tool designed to assist automation engineers in quickly creating PLC programs, including function blocks (FB), timers (TL), and other logic components. Built with <strong>Flask</strong> for the backend and <strong>PostgreSQL</strong> for persistent configuration management, it streamlines repetitive coding tasks and enforces standardized programming practices. The tool integrates version control with <strong>Git</strong>, containerized deployments using <strong>Docker</strong>, and is deployed on <strong>AWS LightSail</strong> for scalable, cloud-based operation. Engineers can input structured project specifications and automatically generate PLC code, minimizing manual errors, accelerating project delivery, and improving overall operational efficiency.
-            </p>
-        </div>
-        <div class="card" onclick="toggleDesc(this)">
-            <h3>MAIL - Email Marketing & Automation Tool</h3>
-            <p class="short">Automated email system for marketing campaigns, reports, and workflow optimization.</p>
-            <p class="desc">
-                This <strong>Email Marketing & Automation Tool</strong> is designed to streamline communication and marketing processes by automatically sending emails, reports, and notifications based on schedules and triggers. Built with <strong>Python</strong>, it leverages <strong>SMTP</strong> and scheduling libraries to automate repetitive email tasks, while <strong>AWS</strong> ensures scalable delivery and cloud integration. The system is version-controlled with <strong>Git</strong> and deployed using <strong>Docker</strong> for reliable, containerized operation across environments. Key benefits include <strong>optimized campaign timing</strong>, reduced manual effort, and improved engagement analytics, allowing businesses to focus on strategy rather than execution.
-            </p>
-        </div>
+<section class="projects-section">
+  <div class="container">
+
+    <div class="section-header">
+      <h1>Projects</h1>
+      <p class="section-sub">Industrial automation platforms, real-time data systems, and ML applications</p>
     </div>
 
-    <!-- Mini Projects -->
-    <h2 class="mt-10">Mini Projects</h2>
-    <div class="card-grid mini-projects-grid">
-        <div class="card">
-            <h3>Crop Yield Prediction & Fertilizer Recommendation</h3>
-            <p class="short">ML-based system to help farmers predict crop diseases and recommend fertilizers for improved yield.</p>
-            <p class="desc show">
-                This project combines <strong>crop disease prediction</strong> with a <strong>fertilizer recommendation</strong> system to support farmers in preventing crop losses and improving efficiency. Features include:
-                <ul>
-                    <li>Data Collection from weather stations, soil sensors, and satellite imagery.</li>
-                    <li>Machine Learning algorithms for disease prediction and fertilizer recommendations, improving accuracy over time.</li>
-                    <li>User-friendly interface for farmers to input crop data and receive recommendations.</li>
-                    <li>Alert system for potential disease outbreaks or fertilizer schedules.</li>
-                    <li>Detailed system architecture visualizing workflows, data flow, and project functionality.</li>
-                </ul>
-            </p>
-        </div>
-        <div class="card">
-            <h3>Web Phishing Detection</h3>
-            <p class="short">ML-based system to detect and prevent phishing attacks on websites and emails.</p>
-            <p class="desc show">
-                This project uses <strong>Machine Learning</strong> algorithms to identify phishing attempts. Key functionalities include:
-                <ul>
-                    <li>Detection of malicious URLs and phishing sites in real-time.</li>
-                    <li>Analysis of website metadata, content, and domain characteristics.</li>
-                    <li>Model training using historical phishing and legitimate site datasets.</li>
-                    <li>Integration with alert systems to notify users or administrators of potential threats.</li>
-                    <li>Deployment-ready design using Python and popular data science libraries.</li>
-                </ul>
-            </p>
-        </div>
-        <div class="card">
-            <h3>Face Recognition Attendance System</h3>
-            <p class="short">Real-time attendance logging using facial recognition and Python.</p>
-            <p class="desc show">
-                This system automates attendance tracking by leveraging <strong>facial recognition</strong> technology. Key features include:
-                <ul>
-                    <li>Detection and recognition of faces using <strong>OpenCV</strong> and <strong>face_recognition</strong> libraries.</li>
-                    <li>Automated logging of attendance into databases or Excel sheets.</li>
-                    <li>Real-time alerts for unknown or unauthorized entries.</li>
-                    <li>User-friendly interface for monitoring attendance and generating reports.</li>
-                    <li>Scalable design suitable for classrooms, offices, or industrial setups.</li>
-                </ul>
-            </p>
-        </div>
-        <div class="card">
-            <h3>Heart Disease Prediction</h3>
-            <p class="short">Predictive system to assess heart disease risk using clinical data and machine learning.</p>
-            <p class="desc show">
-                This project leverages <strong>machine learning</strong> to predict the likelihood of heart disease based on medical history and clinical parameters. Key features include:
-                <ul>
-                    <li>Analysis of patient data such as age, blood pressure, cholesterol levels, and lifestyle factors.</li>
-                    <li>Use of ML algorithms to provide risk assessment and early warning for potential heart conditions.</li>
-                    <li>Data visualization of patient risk factors and model predictions for better interpretability.</li>
-                    <li>User-friendly interface to input data and receive predictive insights.</li>
-                    <li>Designed to assist doctors and patients in making informed healthcare decisions.</li>
-                </ul>
-            </p>
-        </div>
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="main">Main Projects</button>
+      <button class="filter-btn" data-filter="mini">Mini Projects</button>
     </div>
+
+    <!-- ── MAIN PROJECTS ─────────────────────────────── -->
+    <div class="proj-group" id="main-group">
+      <h2 class="group-label">
+        <span class="group-dot dot-blue"></span>
+        Main Projects
+      </h2>
+      <div class="proj-grid" id="main-grid">
+
+        <!-- SKEW -->
+        <div class="proj-card" data-category="main" data-index="0">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-icon-wrap pi-blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div class="proj-tags">
+                <span class="tag">FastAPI</span><span class="tag">React.js</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span>
+              </div>
+              <h3>SKEW – Data Collection & Analytics Platform</h3>
+              <p class="proj-short">End-to-end industrial data collection, visualization, and analytics system for real-time environments.</p>
+              <button class="proj-expand-btn">View details <span class="arrow-icon">↓</span></button>
+            </div>
+            <div class="proj-details">
+              <div class="proj-details-inner">
+                <p><strong>SKEW</strong> is a comprehensive industrial analytics platform capturing live process data from PLCs and IoT devices. It processes data through a <strong>FastAPI</strong> backend, stores it in <strong>PostgreSQL</strong>, and serves dynamic dashboards via a <strong>React.js</strong> frontend for trend visualization, production monitoring, and performance analysis.</p>
+                <ul>
+                  <li>Real-time PLC & IoT data ingestion with live dashboard updates</li>
+                  <li>Data analysis, report generation, and multi-format export</li>
+                  <li>Fully containerized with <strong>Docker</strong>, versioned via <strong>Git</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKEW ASRS -->
+        <div class="proj-card" data-category="main" data-index="1">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-icon-wrap pi-teal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+              </div>
+              <div class="proj-tags">
+                <span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">PLC</span><span class="tag">Docker</span>
+              </div>
+              <h3>SKEW ASRS – Automated Storage & Retrieval System</h3>
+              <p class="proj-short">Smart warehouse automation for real-time material storage, retrieval, and complete traceability.</p>
+              <button class="proj-expand-btn">View details <span class="arrow-icon">↓</span></button>
+            </div>
+            <div class="proj-details">
+              <div class="proj-details-inner">
+                <p><strong>SKEW ASRS</strong> automates warehouse operations via seamless PLC communication. Built with <strong>Flask</strong> and <strong>PostgreSQL</strong>, it executes automated material movements across storage cells with complete traceability of every product's location and movement history.</p>
+                <ul>
+                  <li>Real-time inventory dashboards with recipe management</li>
+                  <li>Full material traceability — storage, movement, retrieval history</li>
+                  <li>Deployed via <strong>Docker</strong> & <strong>Git</strong> for reliable production rollouts</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Batch Reporting -->
+        <div class="proj-card" data-category="main" data-index="2">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-icon-wrap pi-purple">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17H7A5 5 0 017 7h2M15 7h2a5 5 0 010 10h-2M8 12h8"/></svg>
+              </div>
+              <div class="proj-tags">
+                <span class="tag">Flask</span><span class="tag">PyQt</span><span class="tag">MSSQL</span><span class="tag">Docker</span>
+              </div>
+              <h3>SKEW Batch Reporting System</h3>
+              <p class="proj-short">Automated batch reporting & recipe management for feed mills and food manufacturing.</p>
+              <button class="proj-expand-btn">View details <span class="arrow-icon">↓</span></button>
+            </div>
+            <div class="proj-details">
+              <div class="proj-details-inner">
+                <p><strong>SKEW Batch Reporting</strong> is an end-to-end process reporting platform for <strong>feed mills, food manufacturing, and chemical batching plants</strong>. Integrates with PLC-based control systems to collect real-time batch data and generate detailed production reports.</p>
+                <ul>
+                  <li>Recipe download, material traceability, and usage optimization</li>
+                  <li><strong>MSSQL</strong> for high-volume secure data management</li>
+                  <li>Empowers operators to analyze trends and reduce resource wastage</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Energy Monitoring -->
+        <div class="proj-card" data-category="main" data-index="3">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-icon-wrap pi-amber">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="proj-tags">
+                <span class="tag">FastAPI</span><span class="tag">React.js</span><span class="tag">PostgreSQL</span><span class="tag">ML</span>
+              </div>
+              <h3>SKEW Energy Monitoring System</h3>
+              <p class="proj-short">Real-time industrial energy analytics and AI-driven load optimization platform.</p>
+              <button class="proj-expand-btn">View details <span class="arrow-icon">↓</span></button>
+            </div>
+            <div class="proj-details">
+              <div class="proj-details-inner">
+                <p><strong>SKEW Energy Monitoring</strong> connects to PLCs and smart meters to collect live electrical parameters — current, voltage, power factor — and analyzes them in <strong>PostgreSQL</strong> for load optimization and cost reduction.</p>
+                <ul>
+                  <li>Interactive dashboards for trend analysis and load optimization</li>
+                  <li><strong>AI-driven load balancing</strong> and predictive maintenance modules</li>
+                  <li>Containerized with <strong>Docker</strong>, built for real-time scalability</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code-X -->
+        <div class="proj-card" data-category="main" data-index="4">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-icon-wrap pi-green">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <div class="proj-tags">
+                <span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span><span class="tag">Docker</span>
+              </div>
+              <h3>Code-X – Automation Engineer Support Tool</h3>
+              <p class="proj-short">Rapid PLC program generation tool to streamline automation workflows and reduce manual effort.</p>
+              <button class="proj-expand-btn">View details <span class="arrow-icon">↓</span></button>
+            </div>
+            <div class="proj-details">
+              <div class="proj-details-inner">
+                <p><strong>Code-X</strong> enables automation engineers to generate PLC programs — function blocks, timers, and logic components — from structured project specifications, minimizing errors and accelerating delivery.</p>
+                <ul>
+                  <li>Standardized PLC code generation from structured input</li>
+                  <li><strong>PostgreSQL</strong> for persistent configuration management</li>
+                  <li>Deployed on <strong>AWS LightSail</strong> with Docker & Git versioning</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIL -->
+        <div class="proj-card" data-category="main" data-index="5">
+          <div class="proj-card-inner">
+            <div class="proj-front">
+              <div class="proj-icon-wrap pi-coral">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="proj-tags">
+                <span class="tag">Python</span><span class="tag">SMTP</span><span class="tag">AWS</span><span class="tag">Docker</span>
+              </div>
+              <h3>MAIL – Email Marketing & Automation Tool</h3>
+              <p class="proj-short">Automated email system for marketing campaigns, reports, and scheduled notifications.</p>
+              <button class="proj-expand-btn">View details <span class="arrow-icon">↓</span></button>
+            </div>
+            <div class="proj-details">
+              <div class="proj-details-inner">
+                <p><strong>MAIL</strong> automates email campaigns, reports, and notifications using <strong>Python SMTP</strong> and scheduling libraries. AWS integration ensures scalable cloud delivery across environments.</p>
+                <ul>
+                  <li>Schedule-based and trigger-based email automation</li>
+                  <li>Optimized campaign timing with engagement analytics</li>
+                  <li>Containerized via <strong>Docker</strong>, versioned with <strong>Git</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── MINI PROJECTS ──────────────────────────────── -->
+    <div class="proj-group" id="mini-group">
+      <h2 class="group-label">
+        <span class="group-dot dot-gray"></span>
+        Mini Projects
+      </h2>
+      <div class="proj-grid mini-grid">
+
+        <div class="proj-card mini-card" data-category="mini">
+          <div class="mini-icon-wrap mi-green">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Crop Yield Prediction & Fertilizer Recommendation</h3>
+          <p class="proj-short">ML-based system helping farmers predict crop diseases and recommend fertilizers.</p>
+          <ul class="mini-list">
+            <li>Data from weather stations, soil sensors & satellite imagery</li>
+            <li>ML algorithms for disease prediction & fertilizer recommendation</li>
+            <li>Alert system for disease outbreaks and fertilizer schedules</li>
+          </ul>
+          <div class="mini-tags"><span class="tag tag-sm">Python</span><span class="tag tag-sm">ML</span><span class="tag tag-sm">Data Science</span></div>
+        </div>
+
+        <div class="proj-card mini-card" data-category="mini">
+          <div class="mini-icon-wrap mi-red">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Web Phishing Detection</h3>
+          <p class="proj-short">ML-based system to detect and prevent phishing attacks on websites and emails.</p>
+          <ul class="mini-list">
+            <li>Real-time detection of malicious URLs and phishing sites</li>
+            <li>Analysis of website metadata, content, and domain characteristics</li>
+            <li>Admin alert system for potential threats</li>
+          </ul>
+          <div class="mini-tags"><span class="tag tag-sm">Python</span><span class="tag tag-sm">ML</span><span class="tag tag-sm">Cybersecurity</span></div>
+        </div>
+
+        <div class="proj-card mini-card" data-category="mini">
+          <div class="mini-icon-wrap mi-blue">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+          </div>
+          <h3>Face Recognition Attendance System</h3>
+          <p class="proj-short">Real-time attendance logging using facial recognition and Python.</p>
+          <ul class="mini-list">
+            <li>Face detection using <strong>OpenCV</strong> & <strong>face_recognition</strong></li>
+            <li>Automated logging to databases or Excel sheets</li>
+            <li>Real-time alerts for unknown or unauthorized entries</li>
+          </ul>
+          <div class="mini-tags"><span class="tag tag-sm">Python</span><span class="tag tag-sm">OpenCV</span><span class="tag tag-sm">CV</span></div>
+        </div>
+
+        <div class="proj-card mini-card" data-category="mini">
+          <div class="mini-icon-wrap mi-coral">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Heart Disease Prediction</h3>
+          <p class="proj-short">Predictive system to assess heart disease risk using clinical data and ML.</p>
+          <ul class="mini-list">
+            <li>Analyzes age, blood pressure, cholesterol & lifestyle factors</li>
+            <li>Risk assessment and early warning for heart conditions</li>
+            <li>Data visualization for better clinical interpretability</li>
+          </ul>
+          <div class="mini-tags"><span class="tag tag-sm">Python</span><span class="tag tag-sm">ML</span><span class="tag tag-sm">Healthcare</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </section>
 
+<style>
+/* ── Section ────────────────────────────────────────── */
+.projects-section { padding: 3em 0 4em; }
+
+.section-header { margin-bottom: 2em; animation: fadeSlideUp 0.5s ease both; }
+.section-header h1 { font-size: 2.2em; font-weight: 700; color: #1e293b; margin-bottom: 0.25em; }
+.dark-mode .section-header h1 { color: #f1f5f9; }
+.section-sub { font-size: 0.97em; color: #64748b; }
+.dark-mode .section-sub { color: #94a3b8; }
+
+/* ── Filter Bar ─────────────────────────────────────── */
+.filter-bar { display: flex; gap: 8px; margin-bottom: 2.5em; flex-wrap: wrap; }
+.filter-btn { padding: 6px 18px; border-radius: 20px; border: 1px solid #e2e8f0; background: transparent; color: #64748b; font-size: 0.85em; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
+.filter-btn:hover { border-color: #007acc; color: #007acc; }
+.filter-btn.active { background: #007acc; color: #fff; border-color: #007acc; }
+.dark-mode .filter-btn { border-color: #2d3748; color: #94a3b8; }
+.dark-mode .filter-btn:hover { border-color: #007acc; color: #60b4e8; }
+.dark-mode .filter-btn.active { background: #007acc; color: #fff; }
+
+/* ── Group Label ────────────────────────────────────── */
+.proj-group { margin-bottom: 3em; }
+.group-label { display: flex; align-items: center; gap: 10px; font-size: 1em; font-weight: 600; color: #475569; margin-bottom: 1.25em; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.8em; }
+.dark-mode .group-label { color: #94a3b8; }
+.group-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.dot-blue { background: #007acc; }
+.dot-gray { background: #94a3b8; }
+
+/* ── Grid ───────────────────────────────────────────── */
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; }
+.mini-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+/* ── Main Project Card ──────────────────────────────── */
+.proj-card { border-radius: 14px; border: 1px solid #e2e8f0; background: #fff; overflow: hidden; transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s; animation: fadeSlideUp 0.5s ease both; }
+.proj-card:hover { box-shadow: 0 8px 28px rgba(0, 122, 204, 0.13); border-color: #007acc55; transform: translateY(-3px); }
+.dark-mode .proj-card { background: #1e1e2e; border-color: #2d3748; }
+.dark-mode .proj-card:hover { border-color: #007acc66; box-shadow: 0 8px 28px rgba(0,122,204,0.18); }
+
+.proj-card-inner { display: flex; flex-direction: column; }
+.proj-front { padding: 1.3rem 1.3rem 1rem; }
+.proj-icon-wrap { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+.pi-blue   { background: #dbeafe; color: #1d4ed8; }
+.pi-teal   { background: #d1fae5; color: #047857; }
+.pi-purple { background: #ede9fe; color: #6d28d9; }
+.pi-amber  { background: #fef3c7; color: #b45309; }
+.pi-green  { background: #dcfce7; color: #166534; }
+.pi-coral  { background: #fee2e2; color: #b91c1c; }
+.dark-mode .pi-blue   { background: #1e3a5f; color: #93c5fd; }
+.dark-mode .pi-teal   { background: #064e3b; color: #6ee7b7; }
+.dark-mode .pi-purple { background: #2e1065; color: #c4b5fd; }
+.dark-mode .pi-amber  { background: #451a03; color: #fcd34d; }
+.dark-mode .pi-green  { background: #052e16; color: #86efac; }
+.dark-mode .pi-coral  { background: #450a0a; color: #fca5a5; }
+
+.proj-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.75rem; }
+.tag { font-size: 0.7em; font-family: 'Courier New', monospace; font-weight: 500; padding: 3px 8px; border-radius: 5px; background: #f0f8ff; color: #007acc; border: 1px solid #bae0f7; }
+.dark-mode .tag { background: #0f2a3f; color: #60b4e8; border-color: #1e4a6e; }
+.tag-sm { font-size: 0.68em; }
+
+.proj-front h3 { font-size: 1em; font-weight: 600; color: #1e293b; margin-bottom: 0.5rem; line-height: 1.4; }
+.dark-mode .proj-front h3 { color: #f1f5f9; }
+.proj-short { font-size: 0.87em; color: #64748b; line-height: 1.55; margin-bottom: 1rem; }
+.dark-mode .proj-short { color: #94a3b8; }
+
+.proj-expand-btn { display: flex; align-items: center; gap: 6px; background: none; border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 14px; font-size: 0.8em; color: #007acc; cursor: pointer; transition: all 0.2s; font-weight: 500; }
+.proj-expand-btn:hover { background: #f0f8ff; border-color: #007acc66; }
+.dark-mode .proj-expand-btn { border-color: #2d3748; color: #60b4e8; }
+.dark-mode .proj-expand-btn:hover { background: #0f2a3f; border-color: #007acc55; }
+.arrow-icon { transition: transform 0.3s ease; display: inline-block; font-style: normal; }
+.proj-card.open .arrow-icon { transform: rotate(180deg); }
+
+/* ── Collapsible Details ────────────────────────────── */
+.proj-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.proj-card.open .proj-details { max-height: 400px; }
+.proj-details-inner { padding: 0 1.3rem 1.3rem; border-top: 1px solid #f1f5f9; padding-top: 1rem; }
+.dark-mode .proj-details-inner { border-top-color: #2d3748; }
+.proj-details-inner p { font-size: 0.88em; color: #475569; line-height: 1.65; margin-bottom: 0.75rem; }
+.dark-mode .proj-details-inner p { color: #94a3b8; }
+.proj-details-inner p strong { color: #1e293b; font-weight: 600; }
+.dark-mode .proj-details-inner p strong { color: #e2e8f0; }
+.proj-details-inner ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.proj-details-inner ul li { font-size: 0.85em; color: #475569; padding-left: 1.1em; position: relative; line-height: 1.5; }
+.proj-details-inner ul li::before { content: '→'; position: absolute; left: 0; color: #007acc; font-size: 0.85em; }
+.dark-mode .proj-details-inner ul li { color: #94a3b8; }
+.proj-details-inner ul li strong { color: #1e293b; font-weight: 600; }
+.dark-mode .proj-details-inner ul li strong { color: #e2e8f0; }
+
+/* ── Mini Cards ─────────────────────────────────────── */
+.mini-card { cursor: default; }
+.mini-card:hover { transform: translateY(-2px); }
+.mini-card .proj-front { padding: 1.2rem; }
+.mini-icon-wrap { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem; }
+.mi-green  { background: #dcfce7; color: #166534; }
+.mi-red    { background: #fee2e2; color: #b91c1c; }
+.mi-blue   { background: #dbeafe; color: #1d4ed8; }
+.mi-coral  { background: #fef3c7; color: #b45309; }
+.dark-mode .mi-green  { background: #052e16; color: #86efac; }
+.dark-mode .mi-red    { background: #450a0a; color: #fca5a5; }
+.dark-mode .mi-blue   { background: #1e3a5f; color: #93c5fd; }
+.dark-mode .mi-coral  { background: #451a03; color: #fcd34d; }
+
+.mini-card h3 { font-size: 0.95em; font-weight: 600; color: #1e293b; margin-bottom: 0.45rem; line-height: 1.4; }
+.dark-mode .mini-card h3 { color: #f1f5f9; }
+.mini-list { list-style: none; padding: 0; margin: 0.7rem 0 0.85rem; display: flex; flex-direction: column; gap: 6px; }
+.mini-list li { font-size: 0.83em; color: #64748b; padding-left: 1em; position: relative; line-height: 1.5; }
+.mini-list li::before { content: '·'; position: absolute; left: 0; color: #007acc; font-weight: 700; }
+.dark-mode .mini-list li { color: #94a3b8; }
+.mini-list li strong { color: #1e293b; font-weight: 600; }
+.dark-mode .mini-list li strong { color: #e2e8f0; }
+.mini-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+/* ── Filtered-out state ─────────────────────────────── */
+.proj-group.hidden { display: none; }
+
+/* ── Animation ──────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .section-header h1 { font-size: 1.7em; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .filter-bar { gap: 6px; }
+  .filter-btn { font-size: 0.8em; padding: 5px 14px; }
+}
+</style>
+
 <script>
-    // Only main projects are clickable
-    function toggleDesc(card) {
-        card.querySelector('.desc').classList.toggle('show');
-    }
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ── Expand / collapse main project cards ──
+  document.querySelectorAll('.proj-card:not(.mini-card)').forEach(function (card) {
+    var btn = card.querySelector('.proj-expand-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = card.classList.contains('open');
+      document.querySelectorAll('.proj-card.open').forEach(function (c) { c.classList.remove('open'); });
+      if (!isOpen) card.classList.add('open');
+    });
+    card.addEventListener('click', function () {
+      var isOpen = card.classList.contains('open');
+      document.querySelectorAll('.proj-card.open').forEach(function (c) { c.classList.remove('open'); });
+      if (!isOpen) card.classList.add('open');
+    });
+  });
+
+  // ── Filter buttons ──
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var mainGroup  = document.getElementById('main-group');
+  var miniGroup  = document.getElementById('mini-group');
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.getAttribute('data-filter');
+      if (f === 'all')  { mainGroup.classList.remove('hidden'); miniGroup.classList.remove('hidden'); }
+      if (f === 'main') { mainGroup.classList.remove('hidden'); miniGroup.classList.add('hidden'); }
+      if (f === 'mini') { mainGroup.classList.add('hidden');    miniGroup.classList.remove('hidden'); }
+    });
+  });
+
+  // ── Scroll-in animation via IntersectionObserver ──
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.proj-card').forEach(function (el, i) {
+    el.style.animationDelay = (i * 0.07) + 's';
+    observer.observe(el);
+  });
+
+});
 </script>
 
-<style>
-    /* Card Grid */
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem; }
-
-    /* Card Styling */
-    .card { background-color: #ffffff; padding: 1.8rem; border-radius: 1.2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; position: relative; }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
-
-    /* Card Titles */
-    .card h3 { margin-bottom: 0.7rem; color: #1a1a1a; font-size: 1.3rem; }
-
-    /* Short description */
-    .card .short { color: #555; font-size: 0.95rem; margin-bottom: 1rem; }
-
-    /* Description hidden by default */
-    .card .desc { display: none; margin-top: 1rem; color: #444; font-size: 0.93rem; line-height: 1.5; }
-
-    /* Show description on toggle */
-    .card .desc.show { display: block; }
-
-    /* Nested lists */
-    .card .desc ul { padding-left: 1.2rem; margin-top: 0.5rem; }
-    .card .desc ul li { margin-bottom: 0.4rem; }
-
-    /* Mini projects always show description */
-    .mini-projects-grid .desc { display: block; cursor: default; }
-    .mini-projects-grid .card:hover { transform: none; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
-</style>
 {% endblock %}

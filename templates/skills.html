@@ -1,65 +1,458 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section>
-    <h1>Skills & Tools</h1>
-    
-    <!-- Programming & Web Development -->
-    <h2>Programming & Web Development</h2>
-    <div class="skill-badges">
-        <span class="badge">Python</span>
-        <span class="badge">Java</span>
-        <span class="badge">HTML</span>
-        <span class="badge">CSS</span>
-        <span class="badge">React.js</span>
-        <span class="badge">Flask</span>
-        <span class="badge">FastAPI</span>
-        <span class="badge">Django</span>
-    </div>
 
-    <!-- Databases & Cloud -->
-    <h2>Databases & Cloud</h2>
-    <div class="skill-badges">
-        <span class="badge">SQL Server</span>
-        <span class="badge">PostgreSQL</span>
-        <span class="badge">RDBMS</span>
-        <span class="badge">DBMS</span>
-        <span class="badge">AWS EC2</span>
-        <span class="badge">AWS S3</span>
-        <span class="badge">AWS Lightsail</span>
-        <span class="badge">Docker</span>
-    </div>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
-    <!-- AI / ML & MLOps -->
-    <h2>AI / ML & MLOps</h2>
-    <div class="skill-badges">
-        <span class="badge">Machine Learning</span>
-        <span class="badge">Deep Learning</span>
-        <span class="badge">Data Science</span>
-        <span class="badge">Pandas</span>
-        <span class="badge">NumPy</span>
-        <span class="badge">Scikit-learn</span>
-        <span class="badge">TensorFlow</span>
-        <span class="badge">PyTorch</span>
-        <span class="badge">MLOps</span>
-        <span class="badge">Model Deployment</span>
-        <span class="badge">Plotly</span>
-        <span class="badge">Grafana</span>
-    </div>
+<style>
+  :root {
+    --blue: #1565C0;
+    --blue-mid: #1976D2;
+    --blue-light: #42A5F5;
+    --bg: #F0F4FF;
+    --card: #ffffff;
+    --text: #0D1B2A;
+    --muted: #5A6A80;
+    --border: rgba(21,101,192,0.12);
 
-    <!-- Version Control & Collaboration -->
-    <h2>Version Control & Collaboration</h2>
-    <div class="skill-badges">
-        <span class="badge">Git</span>
-        <span class="badge">GitHub</span>
-    </div>
+    /* Category accent colors */
+    --c-web:   #1976D2;
+    --c-db:    #00897B;
+    --c-ai:    #7B1FA2;
+    --c-vcs:   #E65100;
+    --c-ind:   #37474F;
+  }
 
-    <!-- Industrial & Other Skills -->
-    <h2>Industrial & Other Skills</h2>
-    <div class="skill-badges">
-        <span class="badge">PLC Integration Protocols</span>
-        <span class="badge">Power BI</span>
-        <span class="badge">Data Visualization</span>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .skills-wrapper {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    padding: 80px 24px;
+    color: var(--text);
+  }
+
+  /* ── Header ── */
+  .skills-header {
+    max-width: 700px;
+    margin: 0 auto 56px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    background: rgba(21,101,192,0.08);
+    border: 1px solid rgba(21,101,192,0.2);
+    border-radius: 40px;
+    padding: 6px 18px;
+    margin-bottom: 22px;
+  }
+
+  .eyebrow span { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-light); display: inline-block; }
+
+  .skills-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(34px, 5.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .skills-title em { font-style: normal; color: var(--blue-mid); }
+
+  .skills-sub {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── Filter Tabs ── */
+  .filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 860px;
+    margin: 0 auto 48px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.65s 0.2s ease forwards;
+  }
+
+  .tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 40px;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .tab-btn:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
+  .tab-btn.active { background: var(--blue-mid); color: #fff; border-color: var(--blue-mid); box-shadow: 0 4px 14px rgba(21,101,192,0.25); }
+
+  /* ── Section ── */
+  .skills-section {
+    max-width: 1040px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s, transform 0.4s;
+  }
+
+  .skills-section.visible { opacity: 1; transform: translateY(0); }
+  .skills-section.hidden  { display: none; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .section-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .section-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .section-count {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    opacity: 0.7;
+  }
+
+  /* ── Skill grid ── */
+  .skill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: 1.5px solid transparent;
+    cursor: default;
+    transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s, background 0.22s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-badge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .skill-badge:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+
+  .skill-badge:hover::before { opacity: 1; }
+
+  .skill-badge .emoji { font-size: 15px; }
+
+  /* per-category badge colors */
+  .badge-web   { background: rgba(25,118,210,0.08);  border-color: rgba(25,118,210,0.18);  color: #0D47A1; }
+  .badge-web:hover   { background: rgba(25,118,210,0.15); border-color: rgba(25,118,210,0.4); }
+
+  .badge-db    { background: rgba(0,137,123,0.08);   border-color: rgba(0,137,123,0.18);   color: #004D40; }
+  .badge-db:hover    { background: rgba(0,137,123,0.15);  border-color: rgba(0,137,123,0.4); }
+
+  .badge-ai    { background: rgba(123,31,162,0.08);  border-color: rgba(123,31,162,0.18);  color: #4A148C; }
+  .badge-ai:hover    { background: rgba(123,31,162,0.15); border-color: rgba(123,31,162,0.4); }
+
+  .badge-vcs   { background: rgba(230,81,0,0.08);    border-color: rgba(230,81,0,0.18);    color: #BF360C; }
+  .badge-vcs:hover   { background: rgba(230,81,0,0.15);   border-color: rgba(230,81,0,0.4); }
+
+  .badge-ind   { background: rgba(55,71,79,0.08);    border-color: rgba(55,71,79,0.18);    color: #263238; }
+  .badge-ind:hover   { background: rgba(55,71,79,0.15);   border-color: rgba(55,71,79,0.4); }
+
+  /* ── Proficiency bar (visible on hover) ── */
+  .skill-tooltip {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text);
+    color: #fff;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 10;
+  }
+
+  .skill-badge:hover .skill-tooltip { opacity: 1; }
+
+  /* ── Summary bar ── */
+  .summary-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    max-width: 760px;
+    margin: 64px auto 0;
+    padding: 32px;
+    background: var(--card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 14px rgba(21,101,192,0.06);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.7s 0.5s ease forwards;
+    text-align: center;
+  }
+
+  .summary-item { }
+
+  .summary-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--blue-mid);
+  }
+
+  .summary-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 600px) {
+    .skill-badge { font-size: 12.5px; padding: 8px 14px; }
+    .summary-bar { gap: 20px; padding: 24px 16px; }
+  }
+</style>
+
+<div class="skills-wrapper">
+
+  <!-- Header -->
+  <div class="skills-header">
+    <div class="eyebrow"><span></span> Technical Arsenal</div>
+    <h1 class="skills-title">Skills &amp; <em>Tools</em></h1>
+    <p class="skills-sub">A curated collection of technologies I use to build real-world solutions — from APIs to industrial automation.</p>
+  </div>
+
+  <!-- Filter Tabs -->
+  <div class="filter-tabs" id="filterTabs">
+    <button class="tab-btn active" data-filter="all">🔍 All Skills</button>
+    <button class="tab-btn" data-filter="web">🌐 Programming & Web</button>
+    <button class="tab-btn" data-filter="db">🗄️ Databases & Cloud</button>
+    <button class="tab-btn" data-filter="ai">🤖 AI / ML & MLOps</button>
+    <button class="tab-btn" data-filter="vcs">🔧 Version Control</button>
+    <button class="tab-btn" data-filter="ind">🏭 Industrial</button>
+  </div>
+
+  <!-- ── Programming & Web ── -->
+  <div class="skills-section" id="section-web" data-category="web">
+    <div class="section-header">
+      <div class="section-dot" style="background:#1976D2"></div>
+      <div class="section-name">Programming & Web Development</div>
+      <div class="section-count" style="background:rgba(25,118,210,0.1);color:#1976D2">8 skills</div>
     </div>
-</section>
+    <div class="skill-grid">
+      <div class="skill-badge badge-web"><span class="emoji">🐍</span> Python <div class="skill-tooltip">Primary Language · Expert</div></div>
+      <div class="skill-badge badge-web"><span class="emoji">☕</span> Java <div class="skill-tooltip">OOP · Intermediate</div></div>
+      <div class="skill-badge badge-web"><span class="emoji">🌐</span> HTML <div class="skill-tooltip">Markup · Expert</div></div>
+      <div class="skill-badge badge-web"><span class="emoji">🎨</span> CSS <div class="skill-tooltip">Styling · Advanced</div></div>
+      <div class="skill-badge badge-web"><span class="emoji">⚛️</span> React.js <div class="skill-tooltip">Frontend · Advanced</div></div>
+      <div class="skill-badge badge-web"><span class="emoji">🫙</span> Flask <div class="skill-tooltip">Backend · Expert</div></div>
+      <div class="skill-badge badge-web"><span class="emoji">⚡</span> FastAPI <div class="skill-tooltip">APIs · Expert</div></div>
+      <div class="skill-badge badge-web"><span class="emoji">🦄</span> Django <div class="skill-tooltip">Full-stack · Intermediate</div></div>
+    </div>
+  </div>
+
+  <!-- ── Databases & Cloud ── -->
+  <div class="skills-section" id="section-db" data-category="db">
+    <div class="section-header">
+      <div class="section-dot" style="background:#00897B"></div>
+      <div class="section-name">Databases & Cloud</div>
+      <div class="section-count" style="background:rgba(0,137,123,0.1);color:#00897B">8 skills</div>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-badge badge-db"><span class="emoji">🗄️</span> SQL Server <div class="skill-tooltip">RDBMS · Advanced</div></div>
+      <div class="skill-badge badge-db"><span class="emoji">🐘</span> PostgreSQL <div class="skill-tooltip">Primary DB · Expert</div></div>
+      <div class="skill-badge badge-db"><span class="emoji">📊</span> RDBMS <div class="skill-tooltip">Relational Design · Expert</div></div>
+      <div class="skill-badge badge-db"><span class="emoji">🗃️</span> DBMS <div class="skill-tooltip">Database Theory · Advanced</div></div>
+      <div class="skill-badge badge-db"><span class="emoji">☁️</span> AWS EC2 <div class="skill-tooltip">Compute · Advanced</div></div>
+      <div class="skill-badge badge-db"><span class="emoji">🪣</span> AWS S3 <div class="skill-tooltip">Storage · Advanced</div></div>
+      <div class="skill-badge badge-db"><span class="emoji">💡</span> AWS Lightsail <div class="skill-tooltip">Deploy · Intermediate</div></div>
+      <div class="skill-badge badge-db"><span class="emoji">🐳</span> Docker <div class="skill-tooltip">Containers · Advanced</div></div>
+    </div>
+  </div>
+
+  <!-- ── AI / ML ── -->
+  <div class="skills-section" id="section-ai" data-category="ai">
+    <div class="section-header">
+      <div class="section-dot" style="background:#7B1FA2"></div>
+      <div class="section-name">AI / ML &amp; MLOps</div>
+      <div class="section-count" style="background:rgba(123,31,162,0.1);color:#7B1FA2">12 skills</div>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-badge badge-ai"><span class="emoji">🧠</span> Machine Learning <div class="skill-tooltip">Core ML · Advanced</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">🔬</span> Deep Learning <div class="skill-tooltip">Neural Nets · Intermediate</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">📈</span> Data Science <div class="skill-tooltip">Analysis · Advanced</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">🐼</span> Pandas <div class="skill-tooltip">Data wrangling · Expert</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">🔢</span> NumPy <div class="skill-tooltip">Numerical · Expert</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">🎯</span> Scikit-learn <div class="skill-tooltip">Classical ML · Advanced</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">🧩</span> TensorFlow <div class="skill-tooltip">Deep learning · Intermediate</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">🔥</span> PyTorch <div class="skill-tooltip">Research ML · Intermediate</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">🚀</span> MLOps <div class="skill-tooltip">ML pipelines · Intermediate</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">📦</span> Model Deployment <div class="skill-tooltip">Production ML · Advanced</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">📊</span> Plotly <div class="skill-tooltip">Visualisation · Advanced</div></div>
+      <div class="skill-badge badge-ai"><span class="emoji">📉</span> Grafana <div class="skill-tooltip">Monitoring · Intermediate</div></div>
+    </div>
+  </div>
+
+  <!-- ── Version Control ── -->
+  <div class="skills-section" id="section-vcs" data-category="vcs">
+    <div class="section-header">
+      <div class="section-dot" style="background:#E65100"></div>
+      <div class="section-name">Version Control &amp; Collaboration</div>
+      <div class="section-count" style="background:rgba(230,81,0,0.1);color:#E65100">2 skills</div>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-badge badge-vcs"><span class="emoji">🌿</span> Git <div class="skill-tooltip">Version control · Expert</div></div>
+      <div class="skill-badge badge-vcs"><span class="emoji">🐙</span> GitHub <div class="skill-tooltip">Collaboration · Expert</div></div>
+    </div>
+  </div>
+
+  <!-- ── Industrial ── -->
+  <div class="skills-section" id="section-ind" data-category="ind">
+    <div class="section-header">
+      <div class="section-dot" style="background:#37474F"></div>
+      <div class="section-name">Industrial &amp; Other Skills</div>
+      <div class="section-count" style="background:rgba(55,71,79,0.1);color:#37474F">3 skills</div>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-badge badge-ind"><span class="emoji">🏭</span> PLC Integration Protocols <div class="skill-tooltip">Industrial · Advanced</div></div>
+      <div class="skill-badge badge-ind"><span class="emoji">📊</span> Power BI <div class="skill-tooltip">BI Reports · Intermediate</div></div>
+      <div class="skill-badge badge-ind"><span class="emoji">📉</span> Data Visualisation <div class="skill-tooltip">Dashboards · Advanced</div></div>
+    </div>
+  </div>
+
+  <!-- Summary bar -->
+  <div class="summary-bar">
+    <div class="summary-item">
+      <div class="summary-num">33</div>
+      <div class="summary-label">Total Skills</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">5</div>
+      <div class="summary-label">Tech Stacks</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">2+</div>
+      <div class="summary-label">Yrs Experience</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">3</div>
+      <div class="summary-label">Cloud Platforms</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ── Filter logic ──
+  const tabs = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('.skills-section');
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      sections.forEach(sec => {
+        if (filter === 'all' || sec.dataset.category === filter) {
+          sec.classList.remove('hidden');
+          requestAnimationFrame(() => sec.classList.add('visible'));
+        } else {
+          sec.classList.remove('visible');
+          sec.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ── Badge stagger on section reveal ──
+  const badgeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const badges = entry.target.querySelectorAll('.skill-badge');
+        badges.forEach((badge, i) => {
+          badge.style.opacity = '0';
+          badge.style.transform = 'translateY(14px)';
+          setTimeout(() => {
+            badge.style.transition = 'opacity 0.35s ease, transform 0.35s ease, box-shadow 0.22s, border-color 0.22s, background 0.22s';
+            badge.style.opacity = '1';
+            badge.style.transform = 'translateY(0)';
+          }, i * 45);
+        });
+        badgeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(s => badgeObserver.observe(s));
+</script>
+
 {% endblock %}
